@@ -1,0 +1,119 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: bulbul
+    password: 123
+    url: jdbc:mysql://localhost:3306/mcq_pro?createDatabaseIfNotExist=true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    password: Walton2021Smartscale
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: walton.smartscale@gmail.com
+    from:
+      address: walton.smartscale@gmail.com
+
+
+upload:
+  file:
+    directory: D:/Spring boot Master/File Upload Dir/
+
+welcome:
+  message: Welcome to code buffer!!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+---
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: bulbul
+    password: 123
+    url: jdbc:mysql://localhost:3306/mcq_pro_qa?createDatabaseIfNotExist=true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  mail:
+    host: smtp.gmail.com
+    password: Walton2021Smartscale
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: walton.smartscale@gmail.com
+    from:
+      address: walton.smartscale@gmail.com
+
+upload:
+  file:
+    directory: D:/Spring boot Master/File Upload Dir/
+
+
+welcome:
+  message: Welcome to code buffer!!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+
+
+---
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: bulbul
+    password: 123
+    url: jdbc:mysql://localhost:3306/mcq_pro_prod?createDatabaseIfNotExist=true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+upload:
+  file:
+    directory: D:/Spring boot Master/File Upload Dir/
+welcome:
+  message: Welcome to code buffer!!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
