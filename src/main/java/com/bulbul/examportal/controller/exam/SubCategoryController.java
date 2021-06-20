@@ -1,6 +1,5 @@
 package com.bulbul.examportal.controller.exam;
 
-
 import com.bulbul.examportal.entity.exam.Category;
 import com.bulbul.examportal.entity.exam.SubCategory;
 import com.bulbul.examportal.service.exam.SubCategoryService;
@@ -50,7 +49,5 @@ public class SubCategoryController {
         this.subCategoryService.deleteSubCategoryById(subCatId);
         return "Subcategory deleted successfully";
     }
-
-
 
 }

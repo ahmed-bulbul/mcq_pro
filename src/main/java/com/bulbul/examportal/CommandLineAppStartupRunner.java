@@ -78,7 +78,6 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         Set<Role> rolesSuperAdminSet = new HashSet<>();
         rolesSuperAdminSet.add(roleSuperAdmin);
         rolesSuperAdminSet.add(roleAdmin);
-        rolesSuperAdminSet.add(roleUser);
 
         if(superAdmin==null){
 

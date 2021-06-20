@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/category")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CategoryController {
 
     @Autowired
