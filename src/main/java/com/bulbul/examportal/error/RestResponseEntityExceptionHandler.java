@@ -149,6 +149,18 @@ public class RestResponseEntityExceptionHandler
                 .body(message);
     }
 
+    /** Not found Exception*/
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorMessage> NotFoundException(NotFoundException exception,
+                                                                              WebRequest request) {
+        List<String> details = new ArrayList<>();
+        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_ACCEPTABLE,
+                exception.getMessage(),details);
+
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                .body(message);
+    }
+
     /**
      * handle internal server error
      * 500 error handle
