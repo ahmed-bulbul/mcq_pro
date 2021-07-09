@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Builder
 public class Quiz {
 
     @Id
@@ -31,6 +30,7 @@ public class Quiz {
     private String numberOfQuestions;
 
     private boolean active=false;
+    private boolean isArchive=false;
     private LocalDate startDate;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -63,7 +63,11 @@ public class Quiz {
     @JsonIgnore
     private Set<Marks> marks=new HashSet<>();
 
-    public Quiz(Long qId, String title, String description, String maxMarks, String numberOfQuestions, boolean active, LocalDate startDate, LocalDate createDate, LocalDateTime updateDateTime, SubCategory subCategory, Subject subject, Set<Question> questions, Set<ExamHistory> examHistories, Set<Marks> marks) {
+    public Quiz() {
+    }
+
+    public Quiz(Long qId, String title, String description, String maxMarks, String numberOfQuestions, boolean active, LocalDate startDate, LocalDate createDate, LocalDateTime updateDateTime, SubCategory subCategory, Subject subject,
+                Set<Question> questions, Set<ExamHistory> examHistories, Set<Marks> marks,boolean isArchive) {
         this.qId = qId;
         this.title = title;
         this.description = description;
@@ -78,10 +82,10 @@ public class Quiz {
         this.questions = questions;
         this.examHistories = examHistories;
         this.marks = marks;
+        this.isArchive=isArchive;
     }
 
-    public Quiz() {
-    }
+
 
     public Long getqId() {
         return qId;
@@ -193,5 +197,13 @@ public class Quiz {
 
     public void setMarks(Set<Marks> marks) {
         this.marks = marks;
+    }
+
+    public boolean isArchive() {
+        return isArchive;
+    }
+
+    public void setArchive(boolean archive) {
+        isArchive = archive;
     }
 }

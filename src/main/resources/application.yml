@@ -17,7 +17,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+#    show-sql: true
   mail:
     host: smtp.gmail.com
     password: Walton2021Smartscale
@@ -36,9 +36,6 @@ spring:
 upload:
   file:
     directory: D:/Spring boot Master/File Upload Dir/
-
-welcome:
-  message: Welcome to code buffer!!
 
 management:
   endpoints:
