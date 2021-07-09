@@ -31,6 +31,7 @@ public class Quiz {
     private String numberOfQuestions;
 
     private boolean active=false;
+    private LocalDate startDate;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(pattern="yyyy-MM-dd")
@@ -53,6 +54,34 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Question> questions=new HashSet<>();
+
+    @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<ExamHistory> examHistories=new HashSet<>();
+
+    @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Marks> marks=new HashSet<>();
+
+    public Quiz(Long qId, String title, String description, String maxMarks, String numberOfQuestions, boolean active, LocalDate startDate, LocalDate createDate, LocalDateTime updateDateTime, SubCategory subCategory, Subject subject, Set<Question> questions, Set<ExamHistory> examHistories, Set<Marks> marks) {
+        this.qId = qId;
+        this.title = title;
+        this.description = description;
+        this.maxMarks = maxMarks;
+        this.numberOfQuestions = numberOfQuestions;
+        this.active = active;
+        this.startDate = startDate;
+        this.createDate = createDate;
+        this.updateDateTime = updateDateTime;
+        this.subCategory = subCategory;
+        this.subject = subject;
+        this.questions = questions;
+        this.examHistories = examHistories;
+        this.marks = marks;
+    }
+
+    public Quiz() {
+    }
 
     public Long getqId() {
         return qId;
@@ -102,6 +131,14 @@ public class Quiz {
         this.active = active;
     }
 
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
     public LocalDate getCreateDate() {
         return createDate;
     }
@@ -126,14 +163,6 @@ public class Quiz {
         this.subCategory = subCategory;
     }
 
-    public Set<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(Set<Question> questions) {
-        this.questions = questions;
-    }
-
     public Subject getSubject() {
         return subject;
     }
@@ -142,20 +171,27 @@ public class Quiz {
         this.subject = subject;
     }
 
-    public Quiz(Long qId, String title, String description, String maxMarks, String numberOfQuestions, boolean active, LocalDate createDate, LocalDateTime updateDateTime, SubCategory subCategory, Subject subject, Set<Question> questions) {
-        this.qId = qId;
-        this.title = title;
-        this.description = description;
-        this.maxMarks = maxMarks;
-        this.numberOfQuestions = numberOfQuestions;
-        this.active = active;
-        this.createDate = createDate;
-        this.updateDateTime = updateDateTime;
-        this.subCategory = subCategory;
-        this.subject = subject;
+    public Set<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<Question> questions) {
         this.questions = questions;
     }
 
-    public Quiz() {
+    public Set<ExamHistory> getExamHistories() {
+        return examHistories;
+    }
+
+    public void setExamHistories(Set<ExamHistory> examHistories) {
+        this.examHistories = examHistories;
+    }
+
+    public Set<Marks> getMarks() {
+        return marks;
+    }
+
+    public void setMarks(Set<Marks> marks) {
+        this.marks = marks;
     }
 }

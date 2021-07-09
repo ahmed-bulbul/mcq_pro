@@ -2,6 +2,7 @@ package com.bulbul.examportal.controller.exam;
 
 
 
+import com.bulbul.examportal.entity.exam.Quiz;
 import com.bulbul.examportal.entity.exam.Subject;
 import com.bulbul.examportal.service.exam.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +28,5 @@ public class SubjectController {
     public List<Subject> getSubjectList(){
         return this.subjectService.getAllSubjects();
     }
+
 }

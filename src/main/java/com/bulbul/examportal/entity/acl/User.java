@@ -1,6 +1,8 @@
 package com.bulbul.examportal.entity.acl;
 
 
+import com.bulbul.examportal.entity.exam.ExamHistory;
+import com.bulbul.examportal.entity.exam.Marks;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -70,6 +72,14 @@ public class User implements UserDetails {
     @JsonIgnore
     private List<Attendance> attendances;
 
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<ExamHistory> examHistories;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Marks> marks;
+
 
 
     @Override
@@ -96,10 +106,12 @@ public class User implements UserDetails {
         return true;
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password,String firstName,String lastName) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.firstName=firstName;
+        this.lastName=lastName;
     }
 
 

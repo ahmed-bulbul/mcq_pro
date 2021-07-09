@@ -2,6 +2,7 @@ package com.bulbul.examportal.service.impl.exam;
 
 import com.bulbul.examportal.entity.exam.Quiz;
 import com.bulbul.examportal.entity.exam.SubCategory;
+import com.bulbul.examportal.entity.exam.Subject;
 import com.bulbul.examportal.repository.exam.QuizRepository;
 import com.bulbul.examportal.service.exam.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,4 +57,10 @@ public class QuizServiceImpl implements QuizService {
     public List<Quiz> getActiveQuizzesOfSubCategory(SubCategory subCategory) {
         return this.quizRepository.findBySubCategoryAndActive(subCategory,true);
     }
+
+    @Override
+    public List<Quiz> getQuizBySubjectIdAndSubCategoryId(Subject subject, SubCategory subCategory) {
+        return this.quizRepository.findBySubjectAndSubCategory(subject,subCategory);
+    }
+
 }

@@ -1,9 +1,13 @@
 package com.bulbul.examportal.controller.exam;
 
 
+import com.bulbul.examportal.controller.acl.DepartmentController;
 import com.bulbul.examportal.entity.exam.Quiz;
 import com.bulbul.examportal.entity.exam.SubCategory;
+import com.bulbul.examportal.entity.exam.Subject;
 import com.bulbul.examportal.service.exam.QuizService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +18,9 @@ import java.util.List;
 @RequestMapping("/quiz")
 @CrossOrigin("*")
 public class QuizController {
+
+    private final Logger LOGGER =
+            LoggerFactory.getLogger(QuizController.class);
 
     @Autowired
     QuizService quizService;
@@ -52,7 +59,6 @@ public class QuizController {
     public List<Quiz> getQuizzesOfSubCategory(@PathVariable("sid") Long sid){
         SubCategory subCategory = new SubCategory();
         subCategory.setSid(sid);
-        System.out.println("Pass"+subCategory);
         return this.quizService.getQuizzesOfSubCategory(subCategory);
     }
 
@@ -70,5 +76,20 @@ public class QuizController {
         subCategory.setSid(sid);
         return this.quizService.getActiveQuizzesOfSubCategory(subCategory);
     }
+
+    //get quiz by subjectId
+    @GetMapping("/subject/{subjectId}/subCategory/{subCategoryId}")
+    public List<Quiz> getQuizBySubjectIdAndSubCategoryId(@PathVariable("subjectId") Long subjectId,
+                                                         @PathVariable("subCategoryId") Long subCategoryId){
+
+        LOGGER.info("Inside get Quiz by Subject Id Method");
+        Subject subject = new Subject();
+        subject.setSubjectId(subjectId);
+
+        SubCategory subCategory = new SubCategory();
+        subCategory.setSid(subCategoryId);
+        return this.quizService.getQuizBySubjectIdAndSubCategoryId(subject,subCategory);
+    }
+
 
 }

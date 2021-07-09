@@ -2,6 +2,7 @@ package com.bulbul.examportal.service.exam;
 
 import com.bulbul.examportal.entity.exam.Quiz;
 import com.bulbul.examportal.entity.exam.SubCategory;
+import com.bulbul.examportal.entity.exam.Subject;
 
 import java.util.List;
 import java.util.Set;
@@ -23,4 +24,6 @@ public interface QuizService {
     List<Quiz> getQuizzesOfSubCategory(SubCategory subCategory);
 
     public List<Quiz> getActiveQuizzesOfSubCategory(SubCategory subCategory);
+
+    List<Quiz> getQuizBySubjectIdAndSubCategoryId(Subject subject, SubCategory subCategory);
 }

@@ -22,6 +22,12 @@ public class SignupRequest {
     private String username;
 
     @NotBlank
+    private String firstName;
+
+    @NotBlank
+    private String lastName;
+
+    @NotBlank
     @Email
     private String email;
 

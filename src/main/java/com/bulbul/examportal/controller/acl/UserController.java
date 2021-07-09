@@ -52,6 +52,8 @@ public class UserController {
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
+                signUpRequest.getFirstName(),
+                signUpRequest.getLastName(),
                 this.bCryptPasswordEncoder.encode(signUpRequest.getPassword()));
 
 
